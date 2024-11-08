@@ -70,12 +70,48 @@
   <span class="count" id="count6">0</span>
 </div>
 
-<script>
-  function incrementCounter(id) {
-    const counter = document.getElementById(id);
-    counter.textContent = parseInt(counter.textContent) + 1;
-  }
-</script>
+  <script>
+    // Function to get a cookie by name
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // Function to set a cookie
+    function setCookie(name, value, days) {
+      let expires = "";
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = `; expires=${date.toUTCString()}`;
+      }
+      document.cookie = `${name}=${value || ""}${expires}; path=/`;
+    }
+
+    // Function to increment counter and save to cookie
+    function incrementCounter(id) {
+      const counter = document.getElementById(id);
+      let count = parseInt(counter.textContent);
+      count += 1;
+      counter.textContent = count;
+      setCookie(id, count, 7); // Save the count to a cookie for 7 days
+    }
+
+    // Function to load counters from cookies on page load
+    function loadCounters() {
+      const counters = ['count1', 'count2', 'count3', 'count4'];
+      counters.forEach(id => {
+        const count = getCookie(id);
+        if (count) {
+          document.getElementById(id).textContent = count;
+        }
+      });
+    }
+
+    // Load counters when the page loads
+    window.onload = loadCounters;
+  </script>
 
 </body>
 </html>
