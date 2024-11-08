@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aaaalrighty then</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .counter-container {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+      font-size: 1.2rem;
+    }
+
+    .counter-container button {
+      margin-left: 10px;
+      padding: 5px 15px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .count {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<h1>Aaaalrighty then!</h1>
+<div class="counter-container">
+  <label>Aaaaaalrighty</label>
+  <button onclick="incrementCounter('count1')">Click Me</button>
+  <span class="count" id="count1">0</span>
+</div>
+
+<div class="counter-container">
+  <label>Lovelies</label>
+  <button onclick="incrementCounter('count2')">Click Me</button>
+  <span class="count" id="count2">0</span>
+</div>
+
+<div class="counter-container">
+  <label>Prerehaps</label>
+  <button onclick="incrementCounter('count3')">Click Me</button>
+  <span class="count" id="count3">0</span>
+</div>
+
+<div class="counter-container">
+  <label>Can do</label>
+  <button onclick="incrementCounter('count4')">Click Me</button>
+  <span class="count" id="count4">0</span>
+</div>
+
+<script>
+  function incrementCounter(id) {
+    const counter = document.getElementById(id);
+    counter.textContent = parseInt(counter.textContent) + 1;
+  }
+</script>
+
+</body>
+</html>
